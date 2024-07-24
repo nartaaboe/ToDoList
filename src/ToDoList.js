@@ -31,19 +31,23 @@ function ToDoList(){
     }
     return (
         <div className="todo-list">
-            {tasks.map(task => (
-                <ToDoItem
-                    key = {task.id}
-                    task = {task}
-                    deleteTask = {deleteTask}
-                    toggleCompleted = {toggleCompleted}
+            <div className="add-task">
+                <input
+                    value={text}
+                    onChange={e => setText(e.target.value)}
                 />
-            ))}
-            <input
-                value={text}
-                onChange={e => setText(e.target.value)}
-            />
-            <button onClick={() => addTask(text)}>Add</button>
+                <button onClick={() => addTask(text)}>Add</button>
+            </div>
+            <div className="todo-item-detail">
+                {tasks.map(task => (
+                    <ToDoItem
+                        key={task.id}
+                        task={task}
+                        deleteTask={deleteTask}
+                        toggleCompleted={toggleCompleted}
+                    />
+                ))}
+            </div>
         </div>
     )
 }
